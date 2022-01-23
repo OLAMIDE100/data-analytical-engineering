@@ -15,7 +15,15 @@ services:
       - PGADMIN_DEFAULT_EMAIL=adesoba5@gmail.com
       - PGADMIN_DEFAULT_PASSWORD=adebimpe1994
     volumes:
-      - "./pgadmin_data:/var/lib/pgadmin:rw"
+      - pgadmin_data:/var/lib/pgadmin
     ports:
       - "8080:80"
+    depends_on:
+      - pgdatabase
+  
+
+volumes:
+  pgadmin_data:
+
+    
 

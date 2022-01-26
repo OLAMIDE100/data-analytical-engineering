@@ -8,7 +8,7 @@
 <img src="https://github.com/OLAMIDE100/data-analytical-engineering/blob/main/067a5a49671e25e12b809e62cbdd8185.jpg"/>
 
 ### Technologies
-* *Google Cloud Platform (GCP)*: Cloud-based auto-scaling platform by Google
+* *Google Cloud Platform (GCP)* : Cloud-based auto-scaling platform by Google
   * *Google Cloud Storage (GCS)*: Data Lake
   * *BigQuery*: Data Warehouse
 * *Terraform*: Infrastructure-as-Code (IaC)

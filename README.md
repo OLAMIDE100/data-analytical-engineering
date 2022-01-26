@@ -1,4 +1,4 @@
-# data-analytical-engineering
+# DATA AND ANALYTICAL ENGINEERING
 
 
 🏹Week 1 Summary:

@@ -36,6 +36,7 @@ GROUP BY
      z."Zone"
 ORDER BY
      count DESC
+
 QUESTION 4
 SELECT 
 	CONCAT(COALESCE(CAST("PUZONE" AS VARCHAR(50)),'unknown'), '/', COALESCE(CAST(zod."Zone" AS VARCHAR(50)),'unknown')) AS "pickup_dropoff",

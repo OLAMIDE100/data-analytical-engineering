@@ -9,6 +9,8 @@ services:
       - "./postgresql_data:/var/lib/postgresql/data:rw"
     ports:
       - "5432:5432"
+    #networks:
+     # - airflow
   pgadmin:
     image: dpage/pgadmin4
     environment:
@@ -24,6 +26,12 @@ services:
 
 volumes:
   pgadmin_data:
+
+
+#networks:
+  #airflow:
+    #external:
+      #name: airflow_2_default
 
     
 

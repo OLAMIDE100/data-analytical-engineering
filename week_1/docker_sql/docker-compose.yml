@@ -1,0 +1,37 @@
+services:
+  pgdatabase:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=mide
+      - POSTGRES_PASSWORD=adebimpe1994
+      - POSTGRES_DB=ny_taxi
+    volumes:
+      - "./postgresql_data:/var/lib/postgresql/data:rw"
+    ports:
+      - "5432:5432"
+    #networks:
+     # - airflow
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=adesoba5@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=adebimpe1994
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    ports:
+      - "8080:80"
+    depends_on:
+      - pgdatabase
+  
+
+volumes:
+  pgadmin_data:
+
+
+#networks:
+  #airflow:
+    #external:
+      #name: airflow_2_default
+
+    
+

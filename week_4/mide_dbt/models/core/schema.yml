@@ -1,0 +1,68 @@
+version: 2
+sources:
+    - name: core
+      #For bigquery:
+      database: endless-context-338620
+
+      # For postgres:
+      #database: production
+
+      schema: trips_data_all
+
+      # loaded_at_field: record_loaded_at
+      tables:
+        - name: fhv_tripdata_2019
+      
+         # freshness:
+           # error_after: {count: 6, period: hour}
+models:
+  - name: dim_zones
+    description: >
+      List of unique zones idefied by locationid. 
+      Includes the service zone they correspond to (Green or yellow).
+  - name: fact_trip
+    description: >
+      Taxi trips corresponding to both service zones (Green and yellow).
+      The table contains records where both pickup and dropoff locations are valid and known zones. 
+      Each record corresponds to a trip uniquely identified by tripid. 
+      
+  - name: dm_monthly_zone_revenue
+    description: >
+      Aggregated table of all taxi trips corresponding to both service zones (Green and yellow) per pickup zone, month and service.
+      The table contains monthly sums of the fare elements used to calculate the monthly revenue. 
+      The table contains also monthly indicators like number of trips, and average trip distance. 
+    columns:
+      - name: revenue_monthly_total_amount
+        description: Monthly sum of the the total_amount of the fare charged for the trip per pickup zone, month and service.
+
+  - name: fact_fhl_trip
+    description: >
+      Taxi trips corresponding to For Hire Vehicle Trip Records.
+      The table contains records where both pickup and dropoff locations are valid and known zones. 
+      Each record corresponds to a trip uniquely identified by Dispatching_base_num. 
+      
+ 
+  - name: stg_fhl_tripdata
+    description: >
+      Trip made for Taxi trips corresponding to For Hire Vehicle Trips.
+      The records were collected and provided to the NYC Taxi and Limousine Commission (TLC) by
+      technology service providers. 
+    columns:
+        - name: Dispatching_base_num
+          description: Primary key for this table,The TLC Base License Number of the base that dispatched the trip
+        - name: pickup_datetime 
+          description: The date and time when the meter was engaged.
+        - name: dropoff_datetime 
+          description: The date and time when the meter was disengaged.
+        - name: Pickup_locationid
+          description: locationid where the meter was engaged.
+        - name: dropoff_locationid 
+          description: locationid where the meter was engaged.
+        - name: Store_and_fwd_flag 
+          description: > 
+            This flag indicates whether the trip record was held in vehicle
+            memory before sending to the vendor, aka “store and forward,”
+            because the vehicle did not have a connection to the server.
+              Y= store and forward trip
+              N= not a store and forward trip
+       

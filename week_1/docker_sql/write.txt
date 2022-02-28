@@ -11,4 +11,4 @@ ingest_taxi_data:001 \
 --table_2=taxi_zone_lookup \
 --url_2="https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv"
 
-git add --all -- ':!week_1/docker_sql/postgresql_data/*' ':!week_1/docker_sql/pgadmin_data/*' ':!week_2/airflow_2/logs/*' ':!week_2/airflow/logs/*' ':!week_2/homework/logs/*'
+git add --all -- ':!week_1/docker_sql/postgresql_data/*' ':!week_1/docker_sql/pgadmin_data/*' ':!week_2/airflow_2/logs/*' ':!week_2/airflow/logs/*' ':!week_2/homework/logs/*' ':!week_5/data/'
